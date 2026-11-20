@@ -1,0 +1,2190 @@
+{
+ "data": {
+  "n_rows": 421570,
+  "n_stores": 45,
+  "n_depts": 81,
+  "date_min": "2010-02-05",
+  "date_max": "2012-10-26",
+  "neg_sales": 1285,
+  "iqr_outliers": 35521,
+  "md_missing_pct": {
+   "MarkDown1": 64.26,
+   "MarkDown2": 73.61,
+   "MarkDown3": 67.48,
+   "MarkDown4": 67.98,
+   "MarkDown5": 64.08
+  },
+  "neg_markdowns": 1568,
+  "holiday_rows": 29661,
+  "sales_skew": 3.262,
+  "sales_desc": {
+   "count": 421570.0,
+   "mean": 15981.26,
+   "std": 22711.18,
+   "min": -4988.94,
+   "25%": 2079.65,
+   "50%": 7612.03,
+   "75%": 20205.85,
+   "max": 693099.36
+  }
+ },
+ "target": {
+  "t1": 3521.78,
+  "t2": 14599.76,
+  "counts": [
+   140524,
+   140523,
+   140523
+  ]
+ },
+ "features": [
+  "Store",
+  "Dept",
+  "Size",
+  "Type_A",
+  "Type_B",
+  "Type_C",
+  "IsHoliday",
+  "Temperature",
+  "Fuel_Price",
+  "MarkDown1",
+  "MarkDown2",
+  "MarkDown3",
+  "MarkDown4",
+  "MarkDown5",
+  "MarkDown_Available",
+  "CPI",
+  "Unemployment",
+  "Year",
+  "Month",
+  "Week",
+  "Day",
+  "Days_to_Thanksgiving",
+  "Days_to_Christmas",
+  "SuperBowl",
+  "LaborDay"
+ ],
+ "corr_with_target": {
+  "Size": 0.264,
+  "Type_A": 0.186,
+  "Type_C": -0.146,
+  "Type_B": -0.1,
+  "Store": -0.073,
+  "MarkDown4": 0.046,
+  "MarkDown3": 0.032,
+  "CPI": -0.031,
+  "Dept": -0.029,
+  "MarkDown2": 0.027,
+  "MarkDown5": 0.025,
+  "MarkDown1": 0.024,
+  "Week": 0.023,
+  "Days_to_Christmas": -0.023,
+  "Days_to_Thanksgiving": -0.023,
+  "Month": 0.023,
+  "Year": -0.016,
+  "Temperature": -0.011,
+  "IsHoliday": 0.005,
+  "Fuel_Price": 0.005,
+  "MarkDown_Available": -0.003,
+  "Unemployment": -0.003,
+  "Day": -0.003,
+  "SuperBowl": 0.002,
+  "LaborDay": -0.001
+ },
+ "split": {
+  "model_n": 100000,
+  "train_n": 80000,
+  "test_n": 20000,
+  "viz_n": 3000
+ },
+ "baseline_knn_viz": 0.412,
+ "pca": {
+  "k95": 16,
+  "evr": [
+   0.175,
+   0.1488,
+   0.1002,
+   0.077,
+   0.0706,
+   0.0551,
+   0.051,
+   0.0481,
+   0.0399,
+   0.0383,
+   0.0361,
+   0.0354,
+   0.0301,
+   0.0237,
+   0.0206,
+   0.0184,
+   0.0111,
+   0.0083,
+   0.0053,
+   0.005,
+   0.0019,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "top_pc1": {
+   "Days_to_Thanksgiving": 0.429,
+   "Days_to_Christmas": 0.429,
+   "Week": 0.429,
+   "Month": 0.428,
+   "Year": 0.245
+  },
+  "top_pc2": {
+   "MarkDown_Available": 0.406,
+   "MarkDown5": 0.371,
+   "MarkDown1": 0.364,
+   "Year": 0.344,
+   "MarkDown4": 0.291
+  }
+ },
+ "lda": {
+  "evr": [
+   0.8433,
+   0.1567
+  ],
+  "clf_test_acc": 0.4414
+ },
+ "svd": {
+  "singular_values_top5": [
+   591.66,
+   545.44,
+   447.59,
+   392.55,
+   375.9
+  ],
+  "evr_2": [
+   0.1735,
+   0.1495
+  ]
+ },
+ "kpca_gamma": 0.005,
+ "embeddings": [
+  {
+   "Method": "PCA",
+   "kNN acc (5-fold)": 0.371,
+   "Trustworthiness": 0.889,
+   "Silhouette (true classes)": -0.016,
+   "Time (s)": 0.002,
+   "n": 3000
+  },
+  {
+   "Method": "LDA",
+   "kNN acc (5-fold)": 0.463,
+   "Trustworthiness": 0.699,
+   "Silhouette (true classes)": -0.02,
+   "Time (s)": 0.143,
+   "n": 3000
+  },
+  {
+   "Method": "SVD",
+   "kNN acc (5-fold)": 0.371,
+   "Trustworthiness": 0.889,
+   "Silhouette (true classes)": -0.016,
+   "Time (s)": 0.005,
+   "n": 3000
+  },
+  {
+   "Method": "Kernel PCA",
+   "kNN acc (5-fold)": 0.364,
+   "Trustworthiness": 0.889,
+   "Silhouette (true classes)": -0.014,
+   "Time (s)": 2.135,
+   "n": 3000
+  },
+  {
+   "Method": "SNE",
+   "kNN acc (5-fold)": 0.373,
+   "Trustworthiness": 0.958,
+   "Silhouette (true classes)": -0.019,
+   "Time (s)": 44.849,
+   "n": 1500
+  },
+  {
+   "Method": "t-SNE",
+   "kNN acc (5-fold)": 0.395,
+   "Trustworthiness": 0.996,
+   "Silhouette (true classes)": -0.024,
+   "Time (s)": 7.926,
+   "n": 3000
+  },
+  {
+   "Method": "UMAP",
+   "kNN acc (5-fold)": 0.388,
+   "Trustworthiness": 0.99,
+   "Silhouette (true classes)": -0.03,
+   "Time (s)": 10.838,
+   "n": 3000
+  },
+  {
+   "Method": "Metric MDS",
+   "kNN acc (5-fold)": 0.374,
+   "Trustworthiness": 0.899,
+   "Silhouette (true classes)": -0.023,
+   "Time (s)": 4.018,
+   "n": 1000
+  },
+  {
+   "Method": "Non-metric MDS",
+   "kNN acc (5-fold)": 0.37,
+   "Trustworthiness": 0.9,
+   "Silhouette (true classes)": -0.029,
+   "Time (s)": 55.155,
+   "n": 1000
+  },
+  {
+   "Method": "Isomap",
+   "kNN acc (5-fold)": 0.374,
+   "Trustworthiness": 0.91,
+   "Silhouette (true classes)": -0.043,
+   "Time (s)": 1.889,
+   "n": 3000
+  },
+  {
+   "Method": "LLE",
+   "kNN acc (5-fold)": 0.351,
+   "Trustworthiness": 0.841,
+   "Silhouette (true classes)": -0.079,
+   "Time (s)": 2.261,
+   "n": 3000
+  }
+ ],
+ "clustering": [
+  {
+   "Space": "Original (25-D)",
+   "Silhouette": 0.131,
+   "ARI vs class": 0.0,
+   "NMI vs class": 0.001
+  },
+  {
+   "Space": "PCA (16-D, 95% var)",
+   "Silhouette": 0.136,
+   "ARI vs class": 0.0,
+   "NMI vs class": 0.001
+  },
+  {
+   "Space": "PCA (2-D)",
+   "Silhouette": 0.437,
+   "ARI vs class": 0.001,
+   "NMI vs class": 0.001
+  },
+  {
+   "Space": "LDA (2-D)",
+   "Silhouette": 0.453,
+   "ARI vs class": 0.018,
+   "NMI vs class": 0.024
+  },
+  {
+   "Space": "t-SNE (2-D)",
+   "Silhouette": 0.473,
+   "ARI vs class": 0.008,
+   "NMI vs class": 0.008
+  },
+  {
+   "Space": "UMAP (2-D)",
+   "Silhouette": 0.57,
+   "ARI vs class": 0.009,
+   "NMI vs class": 0.009
+  }
+ ],
+ "filter": {
+  "table": [
+   {
+    "Feature": "Size",
+    "Variance (min-max)": 0.1084,
+    "|Spearman|": 0.2699,
+    "ANOVA F": 900.776,
+    "Chi2": 325.3343,
+    "Mutual info": 0.0614,
+    "Mean rank": 2.0
+   },
+   {
+    "Feature": "Type_A",
+    "Variance (min-max)": 0.2498,
+    "|Spearman|": 0.1905,
+    "ANOVA F": 376.5996,
+    "Chi2": 354.0184,
+    "Mutual info": 0.0183,
+    "Mean rank": 3.0
+   },
+   {
+    "Feature": "Type_C",
+    "Variance (min-max)": 0.0908,
+    "|Spearman|": 0.1483,
+    "ANOVA F": 317.3585,
+    "Chi2": 553.1084,
+    "Mutual info": 0.0144,
+    "Mean rank": 3.75
+   },
+   {
+    "Feature": "Dept",
+    "Variance (min-max)": 0.0964,
+    "|Spearman|": 0.0273,
+    "ANOVA F": 81.9847,
+    "Chi2": 35.6261,
+    "Mutual info": 0.4175,
+    "Mean rank": 4.75
+   },
+   {
+    "Feature": "Store",
+    "Variance (min-max)": 0.0851,
+    "|Spearman|": 0.077,
+    "ANOVA F": 79.8585,
+    "Chi2": 27.967,
+    "Mutual info": 0.063,
+    "Mean rank": 4.75
+   },
+   {
+    "Feature": "Type_B",
+    "Variance (min-max)": 0.2371,
+    "|Spearman|": 0.1038,
+    "ANOVA F": 147.2614,
+    "Chi2": 178.0648,
+    "Mutual info": 0.0074,
+    "Mean rank": 6.5
+   },
+   {
+    "Feature": "MarkDown1",
+    "Variance (min-max)": 0.0212,
+    "|Spearman|": 0.0272,
+    "ANOVA F": 38.8349,
+    "Chi2": 24.5111,
+    "Mutual info": 0.015,
+    "Mean rank": 7.5
+   },
+   {
+    "Feature": "MarkDown4",
+    "Variance (min-max)": 0.012,
+    "|Spearman|": 0.0495,
+    "ANOVA F": 27.5508,
+    "Chi2": 18.9793,
+    "Mutual info": 0.0112,
+    "Mean rank": 8.25
+   },
+   {
+    "Feature": "MarkDown5",
+    "Variance (min-max)": 0.0185,
+    "|Spearman|": 0.0254,
+    "ANOVA F": 27.3005,
+    "Chi2": 14.9784,
+    "Mutual info": 0.0143,
+    "Mean rank": 9.25
+   },
+   {
+    "Feature": "CPI",
+    "Variance (min-max)": 0.1494,
+    "|Spearman|": 0.025,
+    "ANOVA F": 10.9016,
+    "Chi2": 7.299,
+    "Mutual info": 0.0116,
+    "Mean rank": 10.5
+   },
+   {
+    "Feature": "MarkDown2",
+    "Variance (min-max)": 0.0111,
+    "|Spearman|": 0.0253,
+    "ANOVA F": 2.9671,
+    "Chi2": 3.0589,
+    "Mutual info": 0.0083,
+    "Mean rank": 13.0
+   },
+   {
+    "Feature": "Month",
+    "Variance (min-max)": 0.0874,
+    "|Spearman|": 0.0246,
+    "ANOVA F": 8.2056,
+    "Chi2": 2.8779,
+    "Mutual info": 0.0017,
+    "Mean rank": 14.0
+   },
+   {
+    "Feature": "MarkDown3",
+    "Variance (min-max)": 0.0062,
+    "|Spearman|": 0.0299,
+    "ANOVA F": 1.0237,
+    "Chi2": 1.6561,
+    "Mutual info": 0.0095,
+    "Mean rank": 14.5
+   },
+   {
+    "Feature": "Days_to_Thanksgiving",
+    "Variance (min-max)": 0.0773,
+    "|Spearman|": 0.0241,
+    "ANOVA F": 7.7607,
+    "Chi2": 2.3455,
+    "Mutual info": 0.0049,
+    "Mean rank": 15.0
+   },
+   {
+    "Feature": "Week",
+    "Variance (min-max)": 0.0773,
+    "|Spearman|": 0.0241,
+    "ANOVA F": 7.7607,
+    "Chi2": 2.4511,
+    "Mutual info": 0.0049,
+    "Mean rank": 15.0
+   },
+   {
+    "Feature": "Days_to_Christmas",
+    "Variance (min-max)": 0.0773,
+    "|Spearman|": 0.0241,
+    "ANOVA F": 7.7607,
+    "Chi2": 2.3455,
+    "Mutual info": 0.0049,
+    "Mean rank": 15.0
+   },
+   {
+    "Feature": "LaborDay",
+    "Variance (min-max)": 0.0205,
+    "|Spearman|": 0.0169,
+    "ANOVA F": 2.924,
+    "Chi2": 5.725,
+    "Mutual info": 0.0001,
+    "Mean rank": 16.5
+   },
+   {
+    "Feature": "Unemployment",
+    "Variance (min-max)": 0.0324,
+    "|Spearman|": 0.0005,
+    "ANOVA F": 1.7477,
+    "Chi2": 0.2884,
+    "Mutual info": 0.0373,
+    "Mean rank": 17.25
+   },
+   {
+    "Feature": "IsHoliday",
+    "Variance (min-max)": 0.0659,
+    "|Spearman|": 0.0133,
+    "ANOVA F": 2.3644,
+    "Chi2": 4.393,
+    "Mutual info": 0.0001,
+    "Mean rank": 17.5
+   },
+   {
+    "Feature": "Temperature",
+    "Variance (min-max)": 0.0323,
+    "|Spearman|": 0.0039,
+    "ANOVA F": 0.6275,
+    "Chi2": 0.0667,
+    "Mutual info": 0.0228,
+    "Mean rank": 19.0
+   },
+   {
+    "Feature": "Year",
+    "Variance (min-max)": 0.1582,
+    "|Spearman|": 0.0128,
+    "ANOVA F": 1.6731,
+    "Chi2": 1.103,
+    "Mutual info": 0.0002,
+    "Mean rank": 20.0
+   },
+   {
+    "Feature": "Day",
+    "Variance (min-max)": 0.085,
+    "|Spearman|": 0.005,
+    "ANOVA F": 0.7025,
+    "Chi2": 0.2448,
+    "Mutual info": 0.0013,
+    "Mean rank": 21.25
+   },
+   {
+    "Feature": "MarkDown_Available",
+    "Variance (min-max)": 0.2295,
+    "|Spearman|": 0.001,
+    "ANOVA F": 1.2308,
+    "Chi2": 1.5836,
+    "Mutual info": 0.0001,
+    "Mean rank": 21.75
+   },
+   {
+    "Feature": "Fuel_Price",
+    "Variance (min-max)": 0.0528,
+    "|Spearman|": 0.0047,
+    "ANOVA F": 0.3599,
+    "Chi2": 0.0857,
+    "Mutual info": 0.0015,
+    "Mean rank": 22.25
+   },
+   {
+    "Feature": "SuperBowl",
+    "Variance (min-max)": 0.0207,
+    "|Spearman|": 0.0045,
+    "ANOVA F": 0.5853,
+    "Chi2": 1.1461,
+    "Mutual info": 0.0,
+    "Mean rank": 22.75
+   }
+  ],
+  "low_var": [
+   "MarkDown3"
+  ]
+ },
+ "wrapper": {
+  "SFS forward": {
+   "features": [
+    "Store",
+    "Dept",
+    "Size",
+    "Type_A",
+    "Type_B",
+    "Type_C",
+    "IsHoliday",
+    "Week",
+    "SuperBowl",
+    "LaborDay"
+   ],
+   "cv_f1": 0.8714,
+   "time": 99.1
+  },
+  "SFS backward": {
+   "features": [
+    "Store",
+    "Dept",
+    "Size",
+    "Type_B",
+    "MarkDown1",
+    "MarkDown2",
+    "MarkDown5",
+    "CPI",
+    "Unemployment",
+    "Week"
+   ],
+   "cv_f1": 0.8668,
+   "time": 200.8
+  },
+  "RFE (RF)": {
+   "features": [
+    "Store",
+    "Dept",
+    "Size",
+    "Temperature",
+    "Fuel_Price",
+    "CPI",
+    "Unemployment",
+    "Week",
+    "Day",
+    "Days_to_Thanksgiving"
+   ],
+   "cv_f1": 0.8655,
+   "time": 13.6
+  }
+ },
+ "embedded": {
+  "L1 (Lasso)": {
+   "n_nonzero": 19,
+   "train_acc": 0.4408,
+   "features": [
+    "Size",
+    "Type_C",
+    "Dept",
+    "Type_B",
+    "CPI",
+    "Temperature",
+    "Store",
+    "Year",
+    "MarkDown2",
+    "MarkDown_Available",
+    "IsHoliday",
+    "Month",
+    "MarkDown4",
+    "Unemployment",
+    "SuperBowl",
+    "Day",
+    "MarkDown1",
+    "Fuel_Price",
+    "MarkDown3"
+   ],
+   "coef": {
+    "Store": 0.0597,
+    "Dept": 0.158,
+    "Size": 0.5994,
+    "Type_A": 0.0,
+    "Type_B": 0.1222,
+    "Type_C": 0.1783,
+    "IsHoliday": 0.0391,
+    "Temperature": 0.0627,
+    "Fuel_Price": 0.0029,
+    "MarkDown1": 0.0051,
+    "MarkDown2": 0.0421,
+    "MarkDown3": 0.0012,
+    "MarkDown4": 0.029,
+    "MarkDown5": 0.0,
+    "MarkDown_Available": 0.0399,
+    "CPI": 0.0765,
+    "Unemployment": 0.029,
+    "Year": 0.0435,
+    "Month": 0.0302,
+    "Week": 0.0,
+    "Day": 0.0135,
+    "Days_to_Thanksgiving": 0.0,
+    "Days_to_Christmas": 0.0,
+    "SuperBowl": 0.0231,
+    "LaborDay": 0.0
+   }
+  },
+  "L2 (Ridge)": {
+   "n_nonzero": 25,
+   "train_acc": 0.4419,
+   "features": [
+    "Size",
+    "Dept",
+    "Type_C",
+    "Year",
+    "Type_B",
+    "CPI",
+    "Type_A",
+    "MarkDown_Available",
+    "IsHoliday",
+    "Store"
+   ],
+   "coef": {
+    "Store": 0.0655,
+    "Dept": 0.1576,
+    "Size": 0.6143,
+    "Type_A": 0.0757,
+    "Type_B": 0.0832,
+    "Type_C": 0.1574,
+    "IsHoliday": 0.0691,
+    "Temperature": 0.0592,
+    "Fuel_Price": 0.0246,
+    "MarkDown1": 0.014,
+    "MarkDown2": 0.0462,
+    "MarkDown3": 0.0154,
+    "MarkDown4": 0.0308,
+    "MarkDown5": 0.0027,
+    "MarkDown_Available": 0.0693,
+    "CPI": 0.078,
+    "Unemployment": 0.0368,
+    "Year": 0.0964,
+    "Month": 0.0127,
+    "Week": 0.0131,
+    "Day": 0.0248,
+    "Days_to_Thanksgiving": 0.0131,
+    "Days_to_Christmas": 0.0131,
+    "SuperBowl": 0.0369,
+    "LaborDay": 0.0168
+   }
+  },
+  "Elastic Net (\u03b1=0.5)": {
+   "n_nonzero": 21,
+   "train_acc": 0.441,
+   "features": [
+    "Size",
+    "Type_C",
+    "Dept",
+    "CPI",
+    "Type_B",
+    "Temperature",
+    "Type_A",
+    "Store",
+    "Year",
+    "MarkDown_Available",
+    "IsHoliday",
+    "MarkDown2",
+    "Unemployment",
+    "Month",
+    "SuperBowl",
+    "MarkDown4",
+    "Day",
+    "MarkDown1",
+    "Fuel_Price",
+    "MarkDown3",
+    "LaborDay"
+   ],
+   "coef": {
+    "Store": 0.0626,
+    "Dept": 0.1599,
+    "Size": 0.6081,
+    "Type_A": 0.0639,
+    "Type_B": 0.0729,
+    "Type_C": 0.1727,
+    "IsHoliday": 0.0481,
+    "Temperature": 0.0667,
+    "Fuel_Price": 0.0084,
+    "MarkDown1": 0.0117,
+    "MarkDown2": 0.0479,
+    "MarkDown3": 0.0066,
+    "MarkDown4": 0.0285,
+    "MarkDown5": 0.0,
+    "MarkDown_Available": 0.0578,
+    "CPI": 0.08,
+    "Unemployment": 0.0338,
+    "Year": 0.0619,
+    "Month": 0.0312,
+    "Week": 0.0,
+    "Day": 0.0168,
+    "Days_to_Thanksgiving": 0.0,
+    "Days_to_Christmas": 0.0,
+    "SuperBowl": 0.0307,
+    "LaborDay": 0.0039
+   }
+  }
+ },
+ "lgb_gain_share": {
+  "Dept": 0.6699,
+  "Size": 0.1445,
+  "Store": 0.0476,
+  "CPI": 0.0233,
+  "Type_B": 0.019,
+  "Unemployment": 0.0175,
+  "Temperature": 0.0151,
+  "Week": 0.0139,
+  "Fuel_Price": 0.0094,
+  "Month": 0.0064,
+  "Type_C": 0.0052,
+  "Day": 0.005,
+  "Type_A": 0.0045,
+  "Days_to_Thanksgiving": 0.0035,
+  "MarkDown3": 0.0031,
+  "MarkDown1": 0.0029,
+  "MarkDown5": 0.0029,
+  "MarkDown4": 0.0029,
+  "MarkDown2": 0.0025,
+  "Year": 0.0005,
+  "IsHoliday": 0.0003,
+  "SuperBowl": 0.0001,
+  "Days_to_Christmas": 0.0,
+  "LaborDay": 0.0,
+  "MarkDown_Available": 0.0
+ },
+ "meta": {
+  "Genetic Algorithm": {
+   "features": [
+    "Store",
+    "Dept",
+    "Size",
+    "Type_B",
+    "CPI",
+    "Week"
+   ],
+   "fitness": 0.8672,
+   "cv_f1": 0.872,
+   "evals": 331,
+   "time": 192.7807,
+   "hist": [
+    0.8561,
+    0.8587,
+    0.8593,
+    0.8603,
+    0.8623,
+    0.8623,
+    0.8654,
+    0.8672,
+    0.8672,
+    0.8672,
+    0.8672,
+    0.8672,
+    0.8672,
+    0.8672,
+    0.8672,
+    0.8672,
+    0.8672,
+    0.8672,
+    0.8672,
+    0.8672
+   ]
+  },
+  "Binary PSO": {
+   "features": [
+    "Store",
+    "Dept",
+    "Size",
+    "Type_B",
+    "IsHoliday",
+    "CPI",
+    "Days_to_Thanksgiving",
+    "SuperBowl",
+    "LaborDay"
+   ],
+   "fitness": 0.8631,
+   "cv_f1": 0.8703,
+   "evals": 400,
+   "time": 242.3529,
+   "hist": [
+    0.8583,
+    0.8583,
+    0.8592,
+    0.863,
+    0.863,
+    0.863,
+    0.863,
+    0.863,
+    0.863,
+    0.863,
+    0.863,
+    0.863,
+    0.863,
+    0.8631,
+    0.8631,
+    0.8631,
+    0.8631,
+    0.8631,
+    0.8631,
+    0.8631
+   ]
+  },
+  "Simulated Annealing": {
+   "features": [
+    "Store",
+    "Dept",
+    "Size",
+    "Type_B",
+    "Days_to_Thanksgiving"
+   ],
+   "fitness": 0.869,
+   "cv_f1": 0.873,
+   "evals": 248,
+   "time": 151.2174,
+   "hist": [
+    0.4153,
+    0.4153,
+    0.4153,
+    0.4153,
+    0.4153,
+    0.4153,
+    0.4153,
+    0.4153,
+    0.4153,
+    0.4153,
+    0.4153,
+    0.8534,
+    0.8544,
+    0.8544,
+    0.8546,
+    0.8546,
+    0.856,
+    0.856,
+    0.8585,
+    0.8588,
+    0.8588,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8596,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8604,
+    0.8621,
+    0.8625,
+    0.8625,
+    0.8625,
+    0.8625,
+    0.8625,
+    0.8625,
+    0.8625,
+    0.8625,
+    0.8625,
+    0.8638,
+    0.8647,
+    0.8647,
+    0.8647,
+    0.8647,
+    0.8647,
+    0.8647,
+    0.8647,
+    0.8648,
+    0.8648,
+    0.8648,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8652,
+    0.8656,
+    0.8656,
+    0.8656,
+    0.8656,
+    0.8656,
+    0.8656,
+    0.8656,
+    0.8656,
+    0.8666,
+    0.8666,
+    0.8666,
+    0.8666,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869,
+    0.869
+   ]
+  }
+ },
+ "meta_params": {
+  "lambda": 0.02,
+  "GA": "pop=24, gens=20, pc=0.9, pm=1/25, tournament k=3, elitism 2",
+  "BPSO": "20 particles, 20 iters, w=0.7, c1=c2=1.5, vmax=4, sigmoid transfer",
+  "SA": "300 iters, T0=0.02, alpha=0.985, single bit-flip"
+ },
+ "subsets": {
+  "All features": [
+   "Store",
+   "Dept",
+   "Size",
+   "Type_A",
+   "Type_B",
+   "Type_C",
+   "IsHoliday",
+   "Temperature",
+   "Fuel_Price",
+   "MarkDown1",
+   "MarkDown2",
+   "MarkDown3",
+   "MarkDown4",
+   "MarkDown5",
+   "MarkDown_Available",
+   "CPI",
+   "Unemployment",
+   "Year",
+   "Month",
+   "Week",
+   "Day",
+   "Days_to_Thanksgiving",
+   "Days_to_Christmas",
+   "SuperBowl",
+   "LaborDay"
+  ],
+  "Filter (rank fusion)": [
+   "Size",
+   "Type_A",
+   "Type_C",
+   "Dept",
+   "Store",
+   "Type_B",
+   "MarkDown1",
+   "MarkDown4",
+   "MarkDown5",
+   "CPI"
+  ],
+  "Wrapper: SFS forward": [
+   "Store",
+   "Dept",
+   "Size",
+   "Type_A",
+   "Type_B",
+   "Type_C",
+   "IsHoliday",
+   "Week",
+   "SuperBowl",
+   "LaborDay"
+  ],
+  "Wrapper: SFS backward": [
+   "Store",
+   "Dept",
+   "Size",
+   "Type_B",
+   "MarkDown1",
+   "MarkDown2",
+   "MarkDown5",
+   "CPI",
+   "Unemployment",
+   "Week"
+  ],
+  "Wrapper: RFE (RF)": [
+   "Store",
+   "Dept",
+   "Size",
+   "Temperature",
+   "Fuel_Price",
+   "CPI",
+   "Unemployment",
+   "Week",
+   "Day",
+   "Days_to_Thanksgiving"
+  ],
+  "Embedded: L1 (Lasso)": [
+   "Size",
+   "Type_C",
+   "Dept",
+   "Type_B",
+   "CPI",
+   "Temperature",
+   "Store",
+   "Year",
+   "MarkDown2",
+   "MarkDown_Available",
+   "IsHoliday",
+   "Month",
+   "MarkDown4",
+   "Unemployment",
+   "SuperBowl",
+   "Day",
+   "MarkDown1",
+   "Fuel_Price",
+   "MarkDown3"
+  ],
+  "Embedded: L2 (Ridge)": [
+   "Size",
+   "Dept",
+   "Type_C",
+   "Year",
+   "Type_B",
+   "CPI",
+   "Type_A",
+   "MarkDown_Available",
+   "IsHoliday",
+   "Store"
+  ],
+  "Embedded: Elastic Net (\u03b1=0.5)": [
+   "Size",
+   "Type_C",
+   "Dept",
+   "CPI",
+   "Type_B",
+   "Temperature",
+   "Type_A",
+   "Store",
+   "Year",
+   "MarkDown_Available",
+   "IsHoliday",
+   "MarkDown2",
+   "Unemployment",
+   "Month",
+   "SuperBowl",
+   "MarkDown4",
+   "Day",
+   "MarkDown1",
+   "Fuel_Price",
+   "MarkDown3",
+   "LaborDay"
+  ],
+  "Embedded: LightGBM gain": [
+   "Dept",
+   "Size",
+   "Store",
+   "CPI",
+   "Type_B",
+   "Unemployment",
+   "Temperature",
+   "Week",
+   "Fuel_Price",
+   "Month"
+  ],
+  "Metaheuristic: Genetic Algorithm": [
+   "Store",
+   "Dept",
+   "Size",
+   "Type_B",
+   "CPI",
+   "Week"
+  ],
+  "Metaheuristic: Binary PSO": [
+   "Store",
+   "Dept",
+   "Size",
+   "Type_B",
+   "IsHoliday",
+   "CPI",
+   "Days_to_Thanksgiving",
+   "SuperBowl",
+   "LaborDay"
+  ],
+  "Metaheuristic: Simulated Annealing": [
+   "Store",
+   "Dept",
+   "Size",
+   "Type_B",
+   "Days_to_Thanksgiving"
+  ]
+ },
+ "selection_freq": {
+  "Size": 11,
+  "Dept": 11,
+  "Store": 11,
+  "Type_B": 10,
+  "CPI": 9,
+  "Type_C": 5,
+  "IsHoliday": 5,
+  "Week": 5,
+  "Unemployment": 5,
+  "Type_A": 4,
+  "MarkDown1": 4,
+  "SuperBowl": 4,
+  "Temperature": 4,
+  "Fuel_Price": 4,
+  "MarkDown4": 3,
+  "LaborDay": 3,
+  "MarkDown2": 3,
+  "Day": 3,
+  "Days_to_Thanksgiving": 3,
+  "Year": 3,
+  "MarkDown_Available": 3,
+  "Month": 3,
+  "MarkDown5": 2,
+  "MarkDown3": 2
+ },
+ "reduction_after_selection": {
+  "features": [
+   "Store",
+   "Dept",
+   "Size",
+   "Type_B",
+   "CPI",
+   "Week"
+  ],
+  "table": [
+   {
+    "Method": "PCA",
+    "kNN (all 25)": 0.371,
+    "kNN (GA 6)": 0.505,
+    "Silhouette (all 25)": -0.016,
+    "Silhouette (GA 6)": -0.031,
+    "Trust (GA)": 0.938,
+    "K-Means ARI (GA)": 0.017
+   },
+   {
+    "Method": "LDA",
+    "kNN (all 25)": 0.463,
+    "kNN (GA 6)": 0.461,
+    "Silhouette (all 25)": -0.02,
+    "Silhouette (GA 6)": -0.018,
+    "Trust (GA)": 0.891,
+    "K-Means ARI (GA)": 0.027
+   },
+   {
+    "Method": "t-SNE",
+    "kNN (all 25)": 0.395,
+    "kNN (GA 6)": 0.515,
+    "Silhouette (all 25)": -0.024,
+    "Silhouette (GA 6)": -0.017,
+    "Trust (GA)": 0.999,
+    "K-Means ARI (GA)": 0.005
+   },
+   {
+    "Method": "UMAP",
+    "kNN (all 25)": 0.388,
+    "kNN (GA 6)": 0.5,
+    "Silhouette (all 25)": -0.03,
+    "Silhouette (GA 6)": -0.025,
+    "Trust (GA)": 0.998,
+    "K-Means ARI (GA)": 0.026
+   }
+  ]
+ },
+ "holdout": [
+  {
+   "Model": "LightGBM",
+   "Train acc": 0.9929,
+   "Test acc": 0.9344,
+   "Error rate": 0.0656,
+   "Precision": 0.9344,
+   "Recall": 0.9344,
+   "F1": 0.9344,
+   "ROC-AUC": 0.9906,
+   "Fit time (s)": 9.231,
+   "Gap (train-test)": 0.0585,
+   "Diagnosis": "Over-fitting"
+  },
+  {
+   "Model": "XGBoost",
+   "Train acc": 0.9874,
+   "Test acc": 0.9318,
+   "Error rate": 0.0682,
+   "Precision": 0.9319,
+   "Recall": 0.9319,
+   "F1": 0.9318,
+   "ROC-AUC": 0.9899,
+   "Fit time (s)": 7.6785,
+   "Gap (train-test)": 0.0555,
+   "Diagnosis": "Over-fitting"
+  },
+  {
+   "Model": "Decision Tree",
+   "Train acc": 1.0,
+   "Test acc": 0.9018,
+   "Error rate": 0.0981,
+   "Precision": 0.9018,
+   "Recall": 0.9019,
+   "F1": 0.9018,
+   "ROC-AUC": 0.9264,
+   "Fit time (s)": 0.5563,
+   "Gap (train-test)": 0.0981,
+   "Diagnosis": "Over-fitting"
+  },
+  {
+   "Model": "MLP",
+   "Train acc": 0.726,
+   "Test acc": 0.6898,
+   "Error rate": 0.3102,
+   "Precision": 0.687,
+   "Recall": 0.6898,
+   "F1": 0.687,
+   "ROC-AUC": 0.8524,
+   "Fit time (s)": 61.6669,
+   "Gap (train-test)": 0.0362,
+   "Diagnosis": "Under-fitting"
+  },
+  {
+   "Model": "Random Forest",
+   "Train acc": 0.9246,
+   "Test acc": 0.6708,
+   "Error rate": 0.3293,
+   "Precision": 0.6706,
+   "Recall": 0.6708,
+   "F1": 0.6701,
+   "ROC-AUC": 0.8496,
+   "Fit time (s)": 7.3665,
+   "Gap (train-test)": 0.2539,
+   "Diagnosis": "Over-fitting"
+  },
+  {
+   "Model": "Extra Trees",
+   "Train acc": 0.9102,
+   "Test acc": 0.6008,
+   "Error rate": 0.3992,
+   "Precision": 0.5981,
+   "Recall": 0.6009,
+   "F1": 0.5989,
+   "ROC-AUC": 0.7883,
+   "Fit time (s)": 4.9157,
+   "Gap (train-test)": 0.3094,
+   "Diagnosis": "Over-fitting"
+  },
+  {
+   "Model": "KNN (k=15)",
+   "Train acc": 0.5916,
+   "Test acc": 0.508,
+   "Error rate": 0.492,
+   "Precision": 0.5065,
+   "Recall": 0.5081,
+   "F1": 0.5055,
+   "ROC-AUC": 0.6939,
+   "Fit time (s)": 0.0332,
+   "Gap (train-test)": 0.0836,
+   "Diagnosis": "Over-fitting"
+  },
+  {
+   "Model": "Gaussian NB",
+   "Train acc": 0.456,
+   "Test acc": 0.4616,
+   "Error rate": 0.5384,
+   "Precision": 0.4609,
+   "Recall": 0.4617,
+   "F1": 0.4601,
+   "ROC-AUC": 0.638,
+   "Fit time (s)": 0.0564,
+   "Gap (train-test)": -0.0057,
+   "Diagnosis": "Under-fitting"
+  },
+  {
+   "Model": "Logistic Regression",
+   "Train acc": 0.4412,
+   "Test acc": 0.4439,
+   "Error rate": 0.5561,
+   "Precision": 0.4509,
+   "Recall": 0.4439,
+   "F1": 0.4434,
+   "ROC-AUC": 0.6309,
+   "Fit time (s)": 0.2284,
+   "Gap (train-test)": -0.0027,
+   "Diagnosis": "Under-fitting"
+  }
+ ],
+ "best_model": "LightGBM",
+ "cv": {
+  "Logistic Regression": {
+   "Acc mean": 0.441,
+   "Acc std": 0.0007,
+   "F1 mean": 0.4403,
+   "F1 std": 0.0006,
+   "AUC mean": 0.6294,
+   "fold accs": [
+    0.4408,
+    0.4398,
+    0.4418,
+    0.441,
+    0.4417
+   ]
+  },
+  "Gaussian NB": {
+   "Acc mean": 0.457,
+   "Acc std": 0.0034,
+   "F1 mean": 0.4548,
+   "F1 std": 0.0054,
+   "AUC mean": 0.6347,
+   "fold accs": [
+    0.46,
+    0.4608,
+    0.4554,
+    0.457,
+    0.4515
+   ]
+  },
+  "KNN (k=15)": {
+   "Acc mean": 0.5091,
+   "Acc std": 0.0029,
+   "F1 mean": 0.507,
+   "F1 std": 0.0029,
+   "AUC mean": 0.6915,
+   "fold accs": [
+    0.5077,
+    0.5046,
+    0.5133,
+    0.509,
+    0.5107
+   ]
+  },
+  "Decision Tree": {
+   "Acc mean": 0.9042,
+   "Acc std": 0.0014,
+   "F1 mean": 0.9042,
+   "F1 std": 0.0013,
+   "AUC mean": 0.9282,
+   "fold accs": [
+    0.9019,
+    0.906,
+    0.9039,
+    0.904,
+    0.9053
+   ]
+  },
+  "Random Forest": {
+   "Acc mean": 0.6699,
+   "Acc std": 0.0019,
+   "F1 mean": 0.6695,
+   "F1 std": 0.0018,
+   "AUC mean": 0.8492,
+   "fold accs": [
+    0.6724,
+    0.6704,
+    0.6666,
+    0.6692,
+    0.671
+   ]
+  },
+  "Extra Trees": {
+   "Acc mean": 0.5953,
+   "Acc std": 0.005,
+   "F1 mean": 0.5936,
+   "F1 std": 0.0049,
+   "AUC mean": 0.7855,
+   "fold accs": [
+    0.5966,
+    0.59,
+    0.5919,
+    0.5935,
+    0.6044
+   ]
+  },
+  "MLP": {
+   "Acc mean": 0.6645,
+   "Acc std": 0.0235,
+   "F1 mean": 0.6606,
+   "F1 std": 0.0228,
+   "AUC mean": 0.8361,
+   "fold accs": [
+    0.6892,
+    0.6562,
+    0.694,
+    0.6508,
+    0.6324
+   ]
+  },
+  "XGBoost": {
+   "Acc mean": 0.9306,
+   "Acc std": 0.0013,
+   "F1 mean": 0.9307,
+   "F1 std": 0.0013,
+   "AUC mean": 0.9898,
+   "fold accs": [
+    0.9296,
+    0.9294,
+    0.9324,
+    0.9298,
+    0.932
+   ]
+  },
+  "LightGBM": {
+   "Acc mean": 0.9342,
+   "Acc std": 0.002,
+   "F1 mean": 0.9343,
+   "F1 std": 0.002,
+   "AUC mean": 0.9906,
+   "fold accs": [
+    0.9312,
+    0.9336,
+    0.9376,
+    0.9338,
+    0.9349
+   ]
+  }
+ },
+ "cm": {
+  "LightGBM": [
+   [
+    6355,
+    307,
+    5
+   ],
+   [
+    383,
+    6008,
+    276
+   ],
+   [
+    2,
+    339,
+    6325
+   ]
+  ],
+  "XGBoost": [
+   [
+    6342,
+    320,
+    5
+   ],
+   [
+    393,
+    5985,
+    289
+   ],
+   [
+    4,
+    352,
+    6310
+   ]
+  ],
+  "Decision Tree": [
+   [
+    6155,
+    499,
+    13
+   ],
+   [
+    511,
+    5687,
+    469
+   ],
+   [
+    10,
+    461,
+    6195
+   ]
+  ],
+  "Logistic Regression": [
+   [
+    2868,
+    1692,
+    2107
+   ],
+   [
+    1487,
+    2482,
+    2698
+   ],
+   [
+    987,
+    2151,
+    3528
+   ]
+  ],
+  "Gaussian NB": [
+   [
+    3223,
+    1750,
+    1694
+   ],
+   [
+    1815,
+    2453,
+    2399
+   ],
+   [
+    1208,
+    1901,
+    3557
+   ]
+  ]
+ },
+ "cm_interp": {
+  "LightGBM": {
+   "recall": [
+    0.9532,
+    0.9012,
+    0.9488
+   ],
+   "precision": [
+    0.9429,
+    0.9029,
+    0.9575
+   ],
+   "top_confusion": [
+    "Medium",
+    "Low",
+    383
+   ],
+   "far_errors": 7,
+   "far_share": 0.0053,
+   "n_errors": 1312
+  },
+  "XGBoost": {
+   "recall": [
+    0.9513,
+    0.8977,
+    0.9466
+   ],
+   "precision": [
+    0.9411,
+    0.8991,
+    0.9555
+   ],
+   "top_confusion": [
+    "Medium",
+    "Low",
+    393
+   ],
+   "far_errors": 9,
+   "far_share": 0.0066,
+   "n_errors": 1363
+  },
+  "Decision Tree": {
+   "recall": [
+    0.9232,
+    0.853,
+    0.9293
+   ],
+   "precision": [
+    0.922,
+    0.8556,
+    0.9278
+   ],
+   "top_confusion": [
+    "Medium",
+    "Low",
+    511
+   ],
+   "far_errors": 23,
+   "far_share": 0.0117,
+   "n_errors": 1963
+  },
+  "Logistic Regression": {
+   "recall": [
+    0.4302,
+    0.3723,
+    0.5293
+   ],
+   "precision": [
+    0.5369,
+    0.3924,
+    0.4234
+   ],
+   "top_confusion": [
+    "Medium",
+    "High",
+    2698
+   ],
+   "far_errors": 3094,
+   "far_share": 0.2782,
+   "n_errors": 11122
+  },
+  "Gaussian NB": {
+   "recall": [
+    0.4834,
+    0.3679,
+    0.5336
+   ],
+   "precision": [
+    0.516,
+    0.4019,
+    0.465
+   ],
+   "top_confusion": [
+    "Medium",
+    "High",
+    2399
+   ],
+   "far_errors": 2902,
+   "far_share": 0.2695,
+   "n_errors": 10767
+  }
+ },
+ "roc_per_class_best": [
+  0.9946,
+  0.9817,
+  0.9956
+ ],
+ "learning_curve": {
+  "sizes": [
+   2666,
+   7999,
+   15999,
+   31999,
+   53333
+  ],
+  "train": [
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   0.9981
+  ],
+  "val": [
+   0.772,
+   0.8548,
+   0.8912,
+   0.9147,
+   0.926
+  ]
+ },
+ "val_curve_dt": {
+  "depths": [
+   2,
+   4,
+   6,
+   8,
+   12,
+   16,
+   20,
+   25,
+   30
+  ],
+  "train": [
+   0.4686,
+   0.5895,
+   0.6615,
+   0.7655,
+   0.9002,
+   0.9694,
+   0.9951,
+   0.9998,
+   1.0
+  ],
+  "val": [
+   0.4686,
+   0.5883,
+   0.6605,
+   0.7601,
+   0.8694,
+   0.8952,
+   0.893,
+   0.892,
+   0.892
+  ],
+  "best_depth": 16
+ },
+ "forest_ablation": [
+  {
+   "Model": "Random Forest",
+   "max_features": "sqrt",
+   "Train acc": 0.9246,
+   "Test acc": 0.6708,
+   "F1": 0.6701,
+   "ROC-AUC": 0.8496
+  },
+  {
+   "Model": "Random Forest",
+   "max_features": "0.5",
+   "Train acc": 0.9897,
+   "Test acc": 0.9138,
+   "F1": 0.9137,
+   "ROC-AUC": 0.9813
+  },
+  {
+   "Model": "Random Forest",
+   "max_features": "1.0",
+   "Train acc": 0.9888,
+   "Test acc": 0.9301,
+   "F1": 0.93,
+   "ROC-AUC": 0.9881
+  },
+  {
+   "Model": "Extra Trees",
+   "max_features": "sqrt",
+   "Train acc": 0.9102,
+   "Test acc": 0.6008,
+   "F1": 0.5989,
+   "ROC-AUC": 0.7883
+  },
+  {
+   "Model": "Extra Trees",
+   "max_features": "0.5",
+   "Train acc": 0.9975,
+   "Test acc": 0.9054,
+   "F1": 0.9051,
+   "ROC-AUC": 0.9769
+  },
+  {
+   "Model": "Extra Trees",
+   "max_features": "1.0",
+   "Train acc": 0.9965,
+   "Test acc": 0.9327,
+   "F1": 0.9327,
+   "ROC-AUC": 0.9896
+  }
+ ],
+ "subset_eval": [
+  {
+   "Input": "Metaheuristic: Genetic Algorithm",
+   "# dims": 6,
+   "Train acc": 0.9823,
+   "Test acc": 0.937,
+   "Error rate": 0.0631,
+   "Precision": 0.9369,
+   "Recall": 0.937,
+   "F1": 0.9369,
+   "ROC-AUC": 0.9915,
+   "Fit time (s)": 5.4932
+  },
+  {
+   "Input": "Metaheuristic: Binary PSO",
+   "# dims": 9,
+   "Train acc": 0.9826,
+   "Test acc": 0.9364,
+   "Error rate": 0.0636,
+   "Precision": 0.9364,
+   "Recall": 0.9365,
+   "F1": 0.9364,
+   "ROC-AUC": 0.9915,
+   "Fit time (s)": 5.7441
+  },
+  {
+   "Input": "Wrapper: RFE (RF)",
+   "# dims": 10,
+   "Train acc": 0.9922,
+   "Test acc": 0.9354,
+   "Error rate": 0.0646,
+   "Precision": 0.9354,
+   "Recall": 0.9354,
+   "F1": 0.9354,
+   "ROC-AUC": 0.991,
+   "Fit time (s)": 6.2318
+  },
+  {
+   "Input": "Embedded: LightGBM gain",
+   "# dims": 10,
+   "Train acc": 0.9907,
+   "Test acc": 0.9346,
+   "Error rate": 0.0654,
+   "Precision": 0.9346,
+   "Recall": 0.9346,
+   "F1": 0.9346,
+   "ROC-AUC": 0.9911,
+   "Fit time (s)": 6.5622
+  },
+  {
+   "Input": "All features",
+   "# dims": 25,
+   "Train acc": 0.9929,
+   "Test acc": 0.9344,
+   "Error rate": 0.0656,
+   "Precision": 0.9344,
+   "Recall": 0.9344,
+   "F1": 0.9344,
+   "ROC-AUC": 0.9906,
+   "Fit time (s)": 9.478
+  },
+  {
+   "Input": "Wrapper: SFS backward",
+   "# dims": 10,
+   "Train acc": 0.9864,
+   "Test acc": 0.9342,
+   "Error rate": 0.0657,
+   "Precision": 0.9342,
+   "Recall": 0.9343,
+   "F1": 0.9342,
+   "ROC-AUC": 0.9909,
+   "Fit time (s)": 7.2466
+  },
+  {
+   "Input": "Wrapper: SFS forward",
+   "# dims": 10,
+   "Train acc": 0.9695,
+   "Test acc": 0.9332,
+   "Error rate": 0.0667,
+   "Precision": 0.9332,
+   "Recall": 0.9333,
+   "F1": 0.9332,
+   "ROC-AUC": 0.9907,
+   "Fit time (s)": 5.1486
+  },
+  {
+   "Input": "Embedded: Elastic Net (\u03b1=0.5)",
+   "# dims": 21,
+   "Train acc": 0.9921,
+   "Test acc": 0.933,
+   "Error rate": 0.067,
+   "Precision": 0.933,
+   "Recall": 0.933,
+   "F1": 0.933,
+   "ROC-AUC": 0.9903,
+   "Fit time (s)": 8.4071
+  },
+  {
+   "Input": "Metaheuristic: Simulated Annealing",
+   "# dims": 5,
+   "Train acc": 0.9695,
+   "Test acc": 0.9322,
+   "Error rate": 0.0678,
+   "Precision": 0.9322,
+   "Recall": 0.9322,
+   "F1": 0.9322,
+   "ROC-AUC": 0.9907,
+   "Fit time (s)": 5.0221
+  },
+  {
+   "Input": "Embedded: L1 (Lasso)",
+   "# dims": 19,
+   "Train acc": 0.992,
+   "Test acc": 0.9322,
+   "Error rate": 0.0678,
+   "Precision": 0.9322,
+   "Recall": 0.9322,
+   "F1": 0.9322,
+   "ROC-AUC": 0.9903,
+   "Fit time (s)": 8.4018
+  },
+  {
+   "Input": "Embedded: L2 (Ridge)",
+   "# dims": 10,
+   "Train acc": 0.9569,
+   "Test acc": 0.9146,
+   "Error rate": 0.0854,
+   "Precision": 0.9147,
+   "Recall": 0.9147,
+   "F1": 0.9146,
+   "ROC-AUC": 0.9859,
+   "Fit time (s)": 5.3447
+  },
+  {
+   "Input": "Filter (rank fusion)",
+   "# dims": 10,
+   "Train acc": 0.9622,
+   "Test acc": 0.9104,
+   "Error rate": 0.0896,
+   "Precision": 0.9104,
+   "Recall": 0.9104,
+   "F1": 0.9103,
+   "ROC-AUC": 0.9841,
+   "Fit time (s)": 6.2289
+  },
+  {
+   "Input": "PCA (16 comps, 95% var)",
+   "# dims": 16,
+   "Train acc": 0.9017,
+   "Test acc": 0.6968,
+   "Error rate": 0.3032,
+   "Precision": 0.6954,
+   "Recall": 0.6968,
+   "F1": 0.696,
+   "ROC-AUC": 0.8761,
+   "Fit time (s)": 9.5034
+  },
+  {
+   "Input": "SVD (16 comps)",
+   "# dims": 16,
+   "Train acc": 0.9017,
+   "Test acc": 0.6968,
+   "Error rate": 0.3032,
+   "Precision": 0.6954,
+   "Recall": 0.6968,
+   "F1": 0.696,
+   "ROC-AUC": 0.8761,
+   "Fit time (s)": 9.8559
+  },
+  {
+   "Input": "LDA (2 comps)",
+   "# dims": 2,
+   "Train acc": 0.6018,
+   "Test acc": 0.5108,
+   "Error rate": 0.4892,
+   "Precision": 0.5116,
+   "Recall": 0.5109,
+   "F1": 0.5104,
+   "ROC-AUC": 0.6984,
+   "Fit time (s)": 4.5457
+  }
+ ],
+ "related": [
+  {
+   "Study": "Chen (2022), FFIT/EAI",
+   "Task": "Regression (store-level)",
+   "Models": "MLR, Elastic-Net, Polynomial",
+   "Feature selection / reduction": "None (manual)",
+   "Best reported result": "MLR R\u00b2=0.933; ENR R\u00b2=0.814"
+  },
+  {
+   "Study": "Akande et al. (2022), LNEE 881",
+   "Task": "Regression",
+   "Models": "XGBoost",
+   "Feature selection / reduction": "Not reported",
+   "Best reported result": "XGBoost judged effective"
+  },
+  {
+   "Study": "Yao (2023), HBEM 5",
+   "Task": "Regression (dept-level)",
+   "Models": "DT, RF, KNN regressors",
+   "Feature selection / reduction": "None",
+   "Best reported result": "RF R\u00b2=0.937, MAE=1937.8"
+  },
+  {
+   "Study": "Chenwi et al. (2024)",
+   "Task": "Regression",
+   "Models": "LR, RF, GBM, XGBoost, LightGBM",
+   "Feature selection / reduction": "None",
+   "Best reported result": "XGBoost MAE=1226.5, R\u00b2\u22480.9999"
+  },
+  {
+   "Study": "Punati et al. (2025), arXiv",
+   "Task": "Multi-horizon forecasting (store-level)",
+   "Models": "XGB, CNN, LSTM, CNN-LSTM, TFT",
+   "Feature selection / reduction": "None",
+   "Best reported result": "TFT R\u00b2=0.9875, SMAPE 4.51%"
+  },
+  {
+   "Study": "This work",
+   "Task": "3-class sales-level classification (dept-level)",
+   "Models": "9 classifiers + 10 reduction + 4 selection families (GA/BPSO/SA)",
+   "Feature selection / reduction": "Filter, wrapper, embedded, GA, BPSO, SA",
+   "Best reported result": "LightGBM: acc=0.934, F1=0.934, AUC=0.991"
+  }
+ ],
+ "islands": [
+  {
+   "Embedding": "t-SNE",
+   "Store type": 0.994,
+   "Year": 0.978,
+   "MarkDown era": 0.995,
+   "Sales class": 0.395
+  },
+  {
+   "Embedding": "UMAP",
+   "Store type": 0.988,
+   "Year": 0.963,
+   "MarkDown era": 0.993,
+   "Sales class": 0.388
+  }
+ ]
+}

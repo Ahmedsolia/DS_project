@@ -1,0 +1,26 @@
+\begin{table*}[!t]
+\caption{LightGBM re-trained on each feature subset or projection (80{,}000 train / 20{,}000 test rows)}
+\label{tab:subsets}
+\centering
+\begin{tabular}{lcccccc}
+\toprule
+Input & \# dims & Train acc. & Test acc. & Macro-F1 & ROC-AUC & Fit (s) \\
+\midrule
+GA (metaheuristic) & 6 & 0.9823 & \textbf{0.9370} & \textbf{0.9369} & \textbf{0.9915} & 5.5 \\
+BPSO (metaheuristic) & 9 & 0.9826 & 0.9364 & 0.9364 & 0.9915 & 5.7 \\
+RFE (wrapper) & 10 & 0.9922 & 0.9354 & 0.9354 & 0.9910 & 6.2 \\
+LightGBM gain (embedded) & 10 & 0.9907 & 0.9346 & 0.9346 & 0.9911 & 6.6 \\
+All features & 25 & 0.9929 & 0.9344 & 0.9344 & 0.9906 & 9.5 \\
+SFS backward (wrapper) & 10 & 0.9864 & 0.9342 & 0.9342 & 0.9909 & 7.2 \\
+SFS forward (wrapper) & 10 & 0.9695 & 0.9332 & 0.9332 & 0.9907 & 5.1 \\
+Elastic-Net (embedded) & 21 & 0.9921 & 0.9330 & 0.9330 & 0.9903 & 8.4 \\
+SA (metaheuristic) & 5 & 0.9695 & 0.9322 & 0.9322 & 0.9907 & 5.0 \\
+L1 / Lasso (embedded) & 19 & 0.9920 & 0.9322 & 0.9322 & 0.9903 & 8.4 \\
+L2 / Ridge (embedded) & 10 & 0.9569 & 0.9146 & 0.9146 & 0.9859 & 5.3 \\
+Filter, rank fusion & 10 & 0.9622 & 0.9104 & 0.9103 & 0.9841 & 6.2 \\
+PCA, 16 comp.\ (95\% var.) & 16 & 0.9017 & 0.6968 & 0.6960 & 0.8761 & 9.5 \\
+SVD, 16 comp. & 16 & 0.9017 & 0.6968 & 0.6960 & 0.8761 & 9.9 \\
+LDA, 2 axes & 2 & 0.6018 & 0.5108 & 0.5104 & 0.6984 & 4.5 \\
+\bottomrule
+\end{tabular}
+\end{table*}

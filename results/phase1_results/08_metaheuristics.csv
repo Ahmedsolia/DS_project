@@ -1,0 +1,4 @@
+﻿Algorithm,n_features,CV_F1,Fitness,Evaluations,Time_s,Features
+Genetic Algorithm,6,0.872,0.8672,331,192.7807,"Store, Dept, Size, Type_B, CPI, Week"
+Binary PSO,9,0.8703,0.8631,400,242.3529,"Store, Dept, Size, Type_B, IsHoliday, CPI, Days_to_Thanksgiving, SuperBowl, LaborDay"
+Simulated Annealing,5,0.873,0.869,248,151.2174,"Store, Dept, Size, Type_B, Days_to_Thanksgiving"

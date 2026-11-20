@@ -1,0 +1,45 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+\usepackage[hidelinks]{hyperref}
+\graphicspath{{./}}
+
+\begin{document}
+
+\title{Feature Reduction, Feature Selection and Metaheuristic Optimisation for Sales-Level Classification on the Noisy Walmart Retail Dataset: A Comparative Analysis}
+
+\author{\IEEEauthorblockN{[Student Name 1]\textsuperscript{1}, [Student Name 2]\textsuperscript{1}}
+\IEEEauthorblockA{\textsuperscript{1}\textit{Artificial Intelligence and Data Science Program (AID)} \\
+\textit{Egypt-Japan University of Science and Technology (E-JUST)}\\
+Alexandria, Egypt \\
+\{student1, student2\}@ejust.edu.eg}
+}
+
+\maketitle
+
+\begin{abstract}
+Weekly department-level retail sales are heavy-tailed, partly missing and influenced by many weak covariates, which makes them a demanding benchmark for feature engineering. We re-formulate the Walmart \emph{Store Sales Forecasting} data (421{,}570 department-weeks, 45 stores, 81 departments) as a balanced three-class \emph{sales-level} problem (Low / Medium / High) and present a comparative analysis of feature reduction, feature selection and classification on it. After a noise audit (64--74\% missing promotions, 8.4\% outliers, negative sales and promotions) and preprocessing into 25 features, we compare ten reduction methods --- PCA, LDA, SVD, Kernel PCA, SNE (implemented from scratch), t-SNE, UMAP, metric and non-metric MDS, Isomap and LLE --- using neighbourhood-classification accuracy, trustworthiness and class silhouette, together with K-Means clustering before and after reduction. We then compare filter, wrapper, embedded and metaheuristic feature selection (Genetic Algorithm, Binary PSO and Simulated Annealing with a size-penalised fitness), and benchmark nine classifiers with an 80/20 hold-out, stratified 5-fold cross-validation, confusion matrices, ROC analysis and learning and validation curves. LightGBM performs best, with 93.44\% test accuracy, macro-F1 0.934 and ROC-AUC 0.991 (5-fold CV 93.42\%$\pm$0.20\%), and only 0.5\% of its errors confuse Low with High. Linear and distance-based classifiers under-fit (44--51\%) because the decisive variable, the department, is a nominal identifier. No unsupervised embedding or clustering recovers the sales levels, but selecting features \emph{before} reduction raises the class information of PCA, t-SNE and UMAP maps by 11--13 points. The GA selects only 6 of 25 features and slightly exceeds the full model (93.70\% accuracy, AUC 0.992) with 42\% less training time, whereas PCA or LDA projections severely degrade the tree ensembles.
+\end{abstract}
+
+\begin{IEEEkeywords}
+feature selection, dimensionality reduction, genetic algorithm, particle swarm optimisation, simulated annealing, t-SNE, UMAP, LightGBM, retail sales, Walmart
+\end{IEEEkeywords}
+
+\input{sec_methods}
+\input{sec_results}
+\input{sec_end}
+
+\section*{Reproducibility}
+All experiments are contained in the notebook \texttt{Modeling.ipynb} (Phase~1 section). The notebook re-creates every table and figure of this paper from the raw Kaggle files with a fixed random seed (42), and stores all reported numbers in \texttt{results/phase1\_results.json}.
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+
+\end{document}

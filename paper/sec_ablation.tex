@@ -1,0 +1,23 @@
+\subsection{Ablation: why the default forests fail}\label{sec:res:ablation}
+The poor results of the random forest (67.1\%) and extra trees (60.1\%) are surprising, given that a single unpruned tree reaches 90.2\%. We hypothesised that the cause is the default \texttt{max\_features}$=\sqrt{d}$. With $d=25$, each split may only consider 5 randomly drawn features, so the dominant \texttt{Dept} variable (67\% of LightGBM's gain) is available at only about 20\% of the splits. The trees are then forced to split on store-week context variables (\texttt{CPI}, \texttt{Temperature}, \texttt{Fuel\_Price}), which are almost unique per store-week and let the trees memorise the training data --- hence the very large train--test gaps.
+
+Table~\ref{tab:ablation} confirms the hypothesis. Raising \texttt{max\_features} to 50\% of the features lifts the random forest from 67.1\% to 91.4\% and extra trees from 60.1\% to 90.5\%. Letting every split see all features (plain bagging) brings them to \textbf{93.0\%} and \textbf{93.3\%}, within 0.2 points of LightGBM, while the train--test gaps shrink from 25--31 points to 3--6 points. The general lesson for mixed-type tabular data is that the random-subspace mechanism, which normally decorrelates trees, becomes harmful when one feature carries most of the signal. The ``failure'' of the default forests is thus a hyper-parameter effect, not a limitation of bagging itself.
+
+\begin{table}[!t]
+\caption{Effect of \texttt{max\_features} on the forests (150 trees, minimum leaf 2; same 80/20 split)}
+\label{tab:ablation}
+\centering
+\begin{tabular}{llcccc}
+\toprule
+Model & max\_feat. & Train & Test & F1 & AUC \\
+\midrule
+Random Forest & $\sqrt{d}$ (5) & 0.925 & 0.671 & 0.670 & 0.850 \\
+ & 0.5 (12) & 0.990 & 0.914 & 0.914 & 0.981 \\
+ & 1.0 (25) & 0.989 & \textbf{0.930} & \textbf{0.930} & \textbf{0.988} \\
+\midrule
+Extra Trees & $\sqrt{d}$ (5) & 0.910 & 0.601 & 0.599 & 0.788 \\
+ & 0.5 (12) & 0.998 & 0.905 & 0.905 & 0.977 \\
+ & 1.0 (25) & 0.997 & \textbf{0.933} & \textbf{0.933} & \textbf{0.990} \\
+\bottomrule
+\end{tabular}
+\end{table}

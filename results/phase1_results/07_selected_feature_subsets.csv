@@ -1,0 +1,13 @@
+﻿Method,n_features,Features
+All features,25,"Store, Dept, Size, Type_A, Type_B, Type_C, IsHoliday, Temperature, Fuel_Price, MarkDown1, MarkDown2, MarkDown3, MarkDown4, MarkDown5, MarkDown_Available, CPI, Unemployment, Year, Month, Week, Day, Days_to_Thanksgiving, Days_to_Christmas, SuperBowl, LaborDay"
+Filter (rank fusion),10,"Size, Type_A, Type_C, Dept, Store, Type_B, MarkDown1, MarkDown4, MarkDown5, CPI"
+Wrapper: SFS forward,10,"Store, Dept, Size, Type_A, Type_B, Type_C, IsHoliday, Week, SuperBowl, LaborDay"
+Wrapper: SFS backward,10,"Store, Dept, Size, Type_B, MarkDown1, MarkDown2, MarkDown5, CPI, Unemployment, Week"
+Wrapper: RFE (RF),10,"Store, Dept, Size, Temperature, Fuel_Price, CPI, Unemployment, Week, Day, Days_to_Thanksgiving"
+Embedded: L1 (Lasso),19,"Size, Type_C, Dept, Type_B, CPI, Temperature, Store, Year, MarkDown2, MarkDown_Available, IsHoliday, Month, MarkDown4, Unemployment, SuperBowl, Day, MarkDown1, Fuel_Price, MarkDown3"
+Embedded: L2 (Ridge),10,"Size, Dept, Type_C, Year, Type_B, CPI, Type_A, MarkDown_Available, IsHoliday, Store"
+Embedded: Elastic Net (α=0.5),21,"Size, Type_C, Dept, CPI, Type_B, Temperature, Type_A, Store, Year, MarkDown_Available, IsHoliday, MarkDown2, Unemployment, Month, SuperBowl, MarkDown4, Day, MarkDown1, Fuel_Price, MarkDown3, LaborDay"
+Embedded: LightGBM gain,10,"Dept, Size, Store, CPI, Type_B, Unemployment, Temperature, Week, Fuel_Price, Month"
+Metaheuristic: Genetic Algorithm,6,"Store, Dept, Size, Type_B, CPI, Week"
+Metaheuristic: Binary PSO,9,"Store, Dept, Size, Type_B, IsHoliday, CPI, Days_to_Thanksgiving, SuperBowl, LaborDay"
+Metaheuristic: Simulated Annealing,5,"Store, Dept, Size, Type_B, Days_to_Thanksgiving"

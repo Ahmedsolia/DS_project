@@ -1,0 +1,7 @@
+﻿Study,Task,Models,Feature selection / reduction,Best reported result
+"Chen (2022), FFIT/EAI",Regression (store-level),"MLR, Elastic-Net, Polynomial",None (manual),MLR R²=0.933; ENR R²=0.814
+"Akande et al. (2022), LNEE 881",Regression,XGBoost,Not reported,XGBoost judged effective
+"Yao (2023), HBEM 5",Regression (dept-level),"DT, RF, KNN regressors",None,"RF R²=0.937, MAE=1937.8"
+Chenwi et al. (2024),Regression,"LR, RF, GBM, XGBoost, LightGBM",None,"XGBoost MAE=1226.5, R²≈0.9999"
+"Punati et al. (2025), arXiv",Multi-horizon forecasting (store-level),"XGB, CNN, LSTM, CNN-LSTM, TFT",None,"TFT R²=0.9875, SMAPE 4.51%"
+This work,3-class sales-level classification (dept-level),9 classifiers + 10 reduction + 4 selection families (GA/BPSO/SA),"Filter, wrapper, embedded, GA, BPSO, SA","LightGBM: acc=0.934, F1=0.934, AUC=0.991"

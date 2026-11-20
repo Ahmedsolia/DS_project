@@ -1,0 +1,6 @@
+﻿Model,Recall_Low,Recall_Medium,Recall_High,Errors,Far_errors_Low_High,Far_share
+LightGBM,0.9532,0.9012,0.9488,1312,7,0.0053
+XGBoost,0.9513,0.8977,0.9466,1363,9,0.0066
+Decision Tree,0.9232,0.853,0.9293,1963,23,0.0117
+Logistic Regression,0.4302,0.3723,0.5293,11122,3094,0.2782
+Gaussian NB,0.4834,0.3679,0.5336,10767,2902,0.2695

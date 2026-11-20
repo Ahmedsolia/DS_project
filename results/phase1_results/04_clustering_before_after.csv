@@ -1,0 +1,7 @@
+﻿Space,Silhouette,ARI vs class,NMI vs class
+Original (25-D),0.131,0.0,0.001
+"PCA (16-D, 95% var)",0.136,0.0,0.001
+PCA (2-D),0.437,0.001,0.001
+LDA (2-D),0.453,0.018,0.024
+t-SNE (2-D),0.473,0.008,0.008
+UMAP (2-D),0.57,0.009,0.009

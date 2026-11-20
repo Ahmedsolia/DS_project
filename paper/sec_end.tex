@@ -1,0 +1,66 @@
+%========================================================================
+\section{Comparison with Related Work}\label{sec:compare}
+%========================================================================
+Table~\ref{tab:related} positions this study against published work on the same Walmart data. A direct numeric comparison is not possible: all previous studies predict the sales \emph{amount} (regression) and report $R^2$, MAE, RMSE or SMAPE, while we predict the sales \emph{level} (classification) and report accuracy, F1 and AUC. Moreover, Chen~\cite{chen2022} and Punati \emph{et al.}~\cite{punati2025} use the aggregated store-level version of the data (one row per store-week), whose errors are measured in hundreds of thousands of dollars, whereas we work at the far noisier department level. The comparison is therefore one of \emph{approach} and \emph{findings}, and on these terms the studies agree with ours in four respects:
+
+\begin{itemize}
+\item \textbf{Boosted trees are the strongest conventional learners.} Chenwi \emph{et al.}~\cite{chenwi2024} and Akande \emph{et al.}~\cite{akande2022} found XGBoost to be the best regressor, and only the much more complex Temporal Fusion Transformer of~\cite{punati2025} beat it. In our classification setting LightGBM and XGBoost are likewise the top two models by a large margin.
+\item \textbf{Linear models are inadequate at the department level.} Chen~\cite{chen2022} obtained a reasonable fit with linear regression on \emph{store-level} aggregates, where the department identity has been summed out. At the department level our linear and naive-Bayes classifiers under-fit badly (44--46\%), for the same structural reason.
+\item \textbf{Over-fitting is the main risk of flexible models.} The polynomial model of~\cite{chen2022} reached a high training $R^2$ but an exploding test RMSE; in our study the unpruned tree and the default forests show the same pattern, and the validation curve locates the optimum tree depth.
+\item \textbf{Store identity, department and size dominate.} Chen~\cite{chen2022} identified type and size as the most influential variables, and our eleven selectors unanimously confirm \texttt{Store}, \texttt{Dept} and \texttt{Size}, while finding the economic and promotional variables of secondary importance.
+\end{itemize}
+
+What this study adds is the systematic treatment of the feature space, which none of the cited works attempts. We compare ten reduction techniques with quantitative quality criteria, show that unsupervised clustering does not recover sales segments, compare four families of feature selection including three metaheuristics, and demonstrate that a 6-feature GA subset matches or exceeds the full model while selection before reduction improves embeddings by more than ten points.
+
+\begin{table*}[!t]
+\caption{Comparison with related work on the Walmart sales data. Regression and classification metrics are not directly comparable}
+\label{tab:related}
+\centering
+\begin{tabular}{p{2.6cm}p{2.6cm}p{3.4cm}p{3.1cm}p{4.2cm}}
+\toprule
+Study & Task / granularity & Models & Feature reduction / selection & Best reported result \\
+\midrule
+Chen (2022)~\cite{chen2022} & Regression, store level & MLR, Elastic-Net, polynomial & None (manual) & MLR $R^2=0.933$; ENR $R^2=0.814$; polynomial over-fits \\
+Akande et al.\ (2022)~\cite{akande2022} & Regression & XGBoost & Not reported & XGBoost judged effective \\
+Yao (2023)~\cite{yao2023} & Regression, dept.\ level & DT, RF, KNN regressors & None & RF $R^2=0.937$, MAE $=1937.8$ \\
+Chenwi et al.\ (2024)~\cite{chenwi2024} & Regression & LR, RF, GBM, XGBoost, LightGBM & None & XGBoost MAE $=1226.5$, $R^2\approx0.9999$ \\
+Punati et al.\ (2025)~\cite{punati2025} & Multi-horizon forecasting, store level & XGB, CNN, LSTM, CNN-LSTM, TFT & None & TFT $R^2=0.9875$, SMAPE $4.51\%$ \\
+\midrule
+\textbf{This work} & \textbf{3-class sales level, dept.\ level} & 9 classifiers; 10 reduction methods; K-Means & Filter, wrapper (SFS, RFE), embedded (L1, L2, EN, gain), GA, BPSO, SA & LightGBM: acc.\ 93.44\%, F1 0.934, AUC 0.991; GA (6 feat.): acc.\ 93.70\%, AUC 0.992 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+%========================================================================
+\section{Discussion}\label{sec:discussion}
+%========================================================================
+\subsection{Why the problem is hard for some models and easy for others}
+The results can be explained by one structural fact: the sales level of a department-week is determined mainly by \emph{which} department of \emph{which} store it is, and these are nominal identifiers coded as integers. A tree can isolate an arbitrary set of department numbers with a few splits; a linear model, a Gaussian naive Bayes or a distance-based $k$-NN cannot, because for them department 92 is simply ``more'' than department 91. The same fact explains why unsupervised embeddings and K-Means fail to show the classes: distances are dominated by the 20 context variables that vary from week to week, while the decisive information sits in a single identifier dimension. It also explains why selection helps reduction (Section~\ref{sec:res:ras}) and why PCA and LDA projections hurt the trees (Section~\ref{sec:res:subsets}).
+
+\subsection{The value of metaheuristic selection}
+The GA, BPSO and SA did not merely match the deterministic selectors; they produced the smallest subsets with the best test performance. The size penalty in Eq.~(\ref{eq:fitness}) is essential here. Greedy wrappers were run with a fixed target size ($K=10$) and filled the remaining slots with weakly useful variables, whereas the metaheuristics discovered that five or six features suffice. The three algorithms reached almost the same core subset, which supports the robustness of the result, although no single metaheuristic dominates on every problem~\cite{wolpert1997}. Their cost, a few minutes each, was made acceptable by three design choices: a 20k-row selection sample, a fast 60-tree surrogate learner and fitness caching.
+
+\subsection{Limitations and threats to validity}
+\begin{itemize}
+\item \textbf{Random rather than temporal split.} We split rows randomly, as the project specification requires. Because each store-department appears in both training and test weeks, the classifier partly memorises its typical level. A forward-chaining time split would be the right protocol for a deployed forecaster and would give lower scores.
+\item \textbf{Sampling.} Computing limits led us to use a 100k-row stratified sample for modelling, 20k rows for selection and 1k--3k points for manifold learning. The learning curve suggests that LightGBM would gain about one more percentage point from the full data.
+\item \textbf{Tertile thresholds.} The class boundaries are statistical, not business-defined. Most errors occur close to them, so a different cut (for example store-specific thresholds) would change the absolute numbers but probably not the ranking.
+\item \textbf{Hyper-parameters.} The classifiers use sensible defaults rather than a full search. The forest ablation shows that a single hyper-parameter can change the ranking of a model family, and a nested search (possibly itself metaheuristic) is a natural next step.
+\item \textbf{Stochasticity.} Each metaheuristic was run with one seed. Repeated runs would quantify their variance more precisely.
+\end{itemize}
+
+%========================================================================
+\section{Conclusion and Future Work}\label{sec:conclusion}
+%========================================================================
+We re-formulated Walmart department-level sales prediction as a balanced three-class sales-level problem and used it to compare feature-reduction, feature-selection and classification methods on a large, noisy, mixed-type dataset. Six findings stand out:
+
+\begin{enumerate}
+\item LightGBM is the best classifier: 93.44\% hold-out accuracy, macro-F1 0.934 and ROC-AUC 0.991, confirmed by 5-fold CV (93.42\% $\pm$ 0.20\%). Its errors are almost all between adjacent levels; only 0.5\% are Low$\leftrightarrow$High.
+\item Linear, probabilistic and distance-based classifiers under-fit (44--51\%) because \texttt{Dept} is a nominal identifier. Default random forests and extra trees over-fit and under-perform a single tree; the ablation attributes this to \texttt{max\_features} hiding the dominant variable.
+\item Among ten 2-D embeddings, t-SNE and UMAP preserve neighbourhoods best (trustworthiness $\ge$0.99) and supervised LDA preserves class information best (46.3\% kNN accuracy). No unsupervised embedding or K-Means clustering recovers the sales levels, even when its silhouette is high.
+\item Feature selection before reduction raises the class information in PCA, t-SNE and UMAP embeddings by 11--13 points.
+\item All eleven selectors agree that \texttt{Store}, \texttt{Dept} and \texttt{Size} are essential. The GA finds a 6-feature subset that slightly exceeds the 25-feature model (93.70\% accuracy) with 42\% less training time, and BPSO and SA find comparable 9- and 5-feature subsets.
+\item For tree ensembles on tabular data, feature \emph{selection} preserves accuracy while linear \emph{projection} (PCA, LDA) destroys it.
+\end{enumerate}
+
+Future work will (i) evaluate the pipeline with a forward-chaining temporal split, (ii) replace integer identifiers by target or embedding encodings so that linear and distance-based methods (and unsupervised reduction) can use them, (iii) jointly optimise feature subsets and hyper-parameters with a multi-objective metaheuristic such as NSGA-II, trading accuracy against subset size and training time, and (iv) extend the classification view to cost-sensitive and ordinal formulations that penalise Low$\leftrightarrow$High errors more heavily.
